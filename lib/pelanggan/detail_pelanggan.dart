@@ -48,6 +48,14 @@ class DetailPelangganPage extends StatelessWidget {
                   style: TextStyle(fontSize: 16, color: Colors.black54),
                 ),
                 const SizedBox(height: 32),
+                const Align(
+                  alignment: Alignment.centerLeft,
+                  child: Text(
+                    'Alamat',
+                    style: TextStyle(fontSize: 16, fontWeight: FontWeight.w600),
+                  ),
+                ),
+                const SizedBox(height: 8),
               ],
             ),
           ),
