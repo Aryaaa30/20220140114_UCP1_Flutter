@@ -41,15 +41,23 @@ class _RegisterPageState extends State<RegisterPage> {
             child: Form(
               key: _formKey,
               child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Image.asset('assets/register.png', height: 200),
-                  const SizedBox(height: 10),
-                  const Text(
-                    'DAFTAR AKUN BARU',
-                    style: TextStyle(
-                      fontSize: 24,
-                      color: Colors.white,
-                      fontWeight: FontWeight.bold,
+                  Center(
+                    child: Column(
+                      children: [
+                        Image.asset('assets/register.png', height: 200),
+                        const SizedBox(height: 10),
+                        const Text(
+                          'DAFTAR AKUN BARU',
+                          style: TextStyle(
+                            fontSize: 24,
+                            color: Colors.white,
+                            fontWeight: FontWeight.bold,
+                          ),
+                          textAlign: TextAlign.center,
+                        ),
+                      ],
                     ),
                   ),
                   const SizedBox(height: 20),
