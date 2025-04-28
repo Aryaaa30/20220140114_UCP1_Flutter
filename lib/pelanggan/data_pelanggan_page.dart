@@ -57,6 +57,35 @@ class _DataPelangganPageState extends State<DataPelangganPage> {
                 hintText: 'Nama Cust',
               ),
               const SizedBox(height: 16),
+              Row(
+                children: [
+                  Expanded(
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        buildLabel('Email'),
+                        buildInputField(
+                          controller: emailController,
+                          hintText: 'Email',
+                        ),
+                      ],
+                    ),
+                  ),
+                  const SizedBox(width: 16),
+                  Expanded(
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        buildLabel('No Hp'),
+                        buildInputField(
+                          controller: noHpController,
+                          hintText: 'No Hp',
+                        ),
+                      ],
+                    ),
+                  ),
+                ],
+              ),
             ],
           ),
         ),
