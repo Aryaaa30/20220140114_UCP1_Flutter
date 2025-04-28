@@ -55,6 +55,7 @@ class DetailPelangganPage extends StatelessWidget {
                     style: TextStyle(fontSize: 16, fontWeight: FontWeight.w600),
                   ),
                 ),
+
                 const SizedBox(height: 8),
                 TextFormField(
                   initialValue: 'Jl. Kedewasaan memang sakit',
@@ -119,6 +120,7 @@ class DetailPelangganPage extends StatelessWidget {
                         ],
                       ),
                     ),
+
                     const SizedBox(width: 16),
                     Expanded(
                       child: Column(
@@ -163,6 +165,29 @@ class DetailPelangganPage extends StatelessWidget {
                 ),
 
                 const SizedBox(height: 40),
+                // Button Selesai
+                SizedBox(
+                  width: double.infinity,
+                  height: 55,
+                  child: ElevatedButton(
+                    style: ElevatedButton.styleFrom(
+                      backgroundColor: Colors.deepOrange,
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(16),
+                      ),
+                    ),
+                    onPressed: () {
+                      Navigator.pop(context);
+                    },
+                    child: const Text(
+                      'Selesai',
+                      style: TextStyle(
+                        fontSize: 18,
+                        fontWeight: FontWeight.w500,
+                      ),
+                    ),
+                  ),
+                ),
               ],
             ),
           ),
