@@ -327,12 +327,9 @@ class _RegisterPageState extends State<RegisterPage> {
     return Text(
       text,
       style: const TextStyle(
-        color: Colors.white, // Ubah warna untuk kontras
+        color: Colors.brown, // Ubah warna menjadi coklat
         fontSize: 16,
         fontWeight: FontWeight.bold,
-        shadows: [
-          Shadow(color: Colors.black54, offset: Offset(1, 1), blurRadius: 2),
-        ],
       ),
     );
   }

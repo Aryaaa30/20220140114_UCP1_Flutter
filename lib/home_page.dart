@@ -82,8 +82,11 @@ class _HomePageState extends State<HomePage> {
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(16),
                   ),
-                  child: Stack(children: [Image.asset('assets/promosi.png')]),
+                  child: Stack(
+                    children: [Image.asset('assets/promosi.jpg', height: 250)],
+                  ),
                 ),
+                const SizedBox(height: 50),
                 // Menu Buttons
                 Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 16.0),
@@ -171,7 +174,7 @@ class MenuCard extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       width: fullWidth ? double.infinity : null,
-      height: 120,
+      height: 200,
       decoration: BoxDecoration(
         color: const Color.fromARGB(255, 139, 69, 19),
         borderRadius: BorderRadius.circular(20),
