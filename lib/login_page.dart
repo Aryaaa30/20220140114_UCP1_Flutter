@@ -3,7 +3,6 @@ import 'package:session5_ucp1/home_page.dart';
 import 'package:session5_ucp1/register_page.dart';
 
 class LoginPage extends StatefulWidget {
-  // memiliki status yang bisa berubah
   const LoginPage({super.key});
 
   @override
@@ -14,10 +13,10 @@ class _LoginPageState extends State<LoginPage> {
   final TextEditingController emailController = TextEditingController();
   final TextEditingController passwordController = TextEditingController();
   bool _obscureText = true;
+  final _formKey = GlobalKey<FormState>(); // Pindahin ke atas biar lebih rapi
 
   @override
   Widget build(BuildContext context) {
-    final _formKey = GlobalKey<FormState>();
     return Scaffold(
       body: Container(
         width: double.infinity,
@@ -35,37 +34,50 @@ class _LoginPageState extends State<LoginPage> {
             key: _formKey,
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
+              crossAxisAlignment: CrossAxisAlignment.start, // Tambahkan ini
               children: [
-                Image.asset(
-                  'assets/logo.png', // Ganti sesuai path logo kamu
-                  height: 300,
-                ),
-                const SizedBox(height: 1),
-                const Text(
-                  'SELAMAT DATANG KEMBALI',
-                  style: TextStyle(
-                    fontSize: 22,
-                    color: Colors.white,
-                    fontWeight: FontWeight.bold,
+                Center(
+                  child: Column(
+                    children: [
+                      Image.asset(
+                        'assets/logo.png', // Ganti sesuai path logo kamu
+                        height: 300,
+                      ),
+                      const SizedBox(height: 1),
+                      const Text(
+                        'SELAMAT DATANG KEMBALI',
+                        style: TextStyle(
+                          fontSize: 22,
+                          color: Colors.white,
+                          fontWeight: FontWeight.bold,
+                        ),
+                      ),
+                    ],
                   ),
                 ),
                 const SizedBox(height: 30),
+
+                // Label Email
+                const Text(
+                  'Email',
+                  style: TextStyle(
+                    color: Colors.white,
+                    fontSize: 16,
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
+                const SizedBox(height: 8),
+
+                // Field Email
                 TextFormField(
                   controller: emailController,
-                  style: const TextStyle(
-                    color: Color.fromARGB(255, 12, 12, 12),
-                  ),
+                  style: const TextStyle(color: Colors.black),
                   decoration: InputDecoration(
-                    prefixIcon: const Icon(
-                      Icons.email,
-                      color: Color.fromARGB(255, 16, 16, 16),
-                    ),
-                    labelText: 'Email',
-                    labelStyle: const TextStyle(
-                      color: Color.fromARGB(255, 16, 16, 16),
-                    ),
+                    prefixIcon: const Icon(Icons.email, color: Colors.black),
+                    labelText: 'Masukkan Email',
+                    labelStyle: const TextStyle(color: Colors.black54),
                     filled: true,
-                    fillColor: const Color.fromARGB(255, 249, 247, 247),
+                    fillColor: Colors.white,
                     border: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(30),
                     ),
@@ -78,39 +90,40 @@ class _LoginPageState extends State<LoginPage> {
                   },
                 ),
                 const SizedBox(height: 20),
+
+                // Label Password
+                const Text(
+                  'Password',
+                  style: TextStyle(
+                    color: Colors.white,
+                    fontSize: 16,
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
+                const SizedBox(height: 8),
+
+                // Field Password
                 TextFormField(
                   controller: passwordController,
-                  obscureText:
-                      _obscureText, //  untuk menyembunyikan/memperlihatkan password
-                  style: const TextStyle(
-                    color: Color.fromARGB(255, 13, 13, 13),
-                  ),
+                  obscureText: _obscureText,
+                  style: const TextStyle(color: Colors.black),
                   decoration: InputDecoration(
-                    prefixIcon: const Icon(
-                      Icons.lock,
-                      color: Color.fromARGB(255, 5, 5, 5),
-                    ),
-                    labelText: 'Password',
-                    labelStyle: const TextStyle(
-                      color: Color.fromARGB(255, 5, 5, 5),
-                    ),
+                    prefixIcon: const Icon(Icons.lock, color: Colors.black),
+                    labelText: 'Masukkan Password',
+                    labelStyle: const TextStyle(color: Colors.black54),
                     filled: true,
-                    fillColor: const Color.fromARGB(255, 255, 255, 255),
+                    fillColor: Colors.white,
                     border: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(30),
                     ),
                     suffixIcon: IconButton(
                       icon: Icon(
-                        _obscureText
-                            ? Icons.visibility
-                            : Icons
-                                .visibility_off, // Menampilkan ikon mata tergantung status
-                        color: const Color.fromARGB(255, 5, 5, 5),
+                        _obscureText ? Icons.visibility : Icons.visibility_off,
+                        color: Colors.black,
                       ),
                       onPressed: () {
                         setState(() {
-                          _obscureText =
-                              !_obscureText; // Mengubah status _obscureText
+                          _obscureText = !_obscureText;
                         });
                       },
                     ),
@@ -123,34 +136,44 @@ class _LoginPageState extends State<LoginPage> {
                   },
                 ),
                 const SizedBox(height: 50),
-                SizedBox(
-                  width: 300,
-                  child: ElevatedButton(
-                    style: ElevatedButton.styleFrom(
-                      backgroundColor: const Color.fromARGB(255, 193, 100, 34),
-                      padding: const EdgeInsets.symmetric(vertical: 14),
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(30),
+
+                // Tombol Login
+                Center(
+                  child: SizedBox(
+                    width: 300,
+                    child: ElevatedButton(
+                      style: ElevatedButton.styleFrom(
+                        backgroundColor: const Color.fromARGB(
+                          255,
+                          193,
+                          100,
+                          34,
+                        ),
+                        padding: const EdgeInsets.symmetric(vertical: 14),
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(30),
+                        ),
                       ),
-                    ),
-                    onPressed: () {
-                      if (_formKey.currentState!.validate()) {
-                        Navigator.pushReplacement(
-                          // Agar tidak bisa kembali ke halaman login page
-                          context,
-                          MaterialPageRoute(
-                            builder: (context) => const HomePage(),
-                          ),
-                        );
-                      }
-                    },
-                    child: const Text(
-                      'LOGIN',
-                      style: TextStyle(color: Colors.white),
+                      onPressed: () {
+                        if (_formKey.currentState!.validate()) {
+                          Navigator.pushReplacement(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => const HomePage(),
+                            ),
+                          );
+                        }
+                      },
+                      child: const Text(
+                        'Masuk',
+                        style: TextStyle(color: Colors.white),
+                      ),
                     ),
                   ),
                 ),
                 const SizedBox(height: 16),
+
+                // Pindah ke Register
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [

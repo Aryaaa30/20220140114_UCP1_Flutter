@@ -182,31 +182,35 @@ class _RegisterPageState extends State<RegisterPage> {
                   const SizedBox(height: 30),
 
                   // Tombol Register
-                  SizedBox(
-                    width: 300,
-                    child: ElevatedButton(
-                      style: ElevatedButton.styleFrom(
-                        backgroundColor: const Color.fromARGB(
-                          255,
-                          193,
-                          100,
-                          34,
+                  Center(
+                    child: SizedBox(
+                      width: 300,
+                      child: ElevatedButton(
+                        style: ElevatedButton.styleFrom(
+                          backgroundColor: const Color.fromARGB(
+                            255,
+                            193,
+                            100,
+                            34,
+                          ),
+                          padding: const EdgeInsets.symmetric(vertical: 16),
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(30),
+                          ),
                         ),
-                        padding: const EdgeInsets.symmetric(vertical: 16),
-                        shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(30),
+                        onPressed: () {
+                          if (_formKey.currentState!.validate()) {
+                            ScaffoldMessenger.of(context).showSnackBar(
+                              const SnackBar(
+                                content: Text('Berhasil Register!'),
+                              ),
+                            );
+                          }
+                        },
+                        child: const Text(
+                          'REGISTER',
+                          style: TextStyle(color: Colors.white, fontSize: 16),
                         ),
-                      ),
-                      onPressed: () {
-                        if (_formKey.currentState!.validate()) {
-                          ScaffoldMessenger.of(context).showSnackBar(
-                            const SnackBar(content: Text('Berhasil Register!')),
-                          );
-                        }
-                      },
-                      child: const Text(
-                        'REGISTER',
-                        style: TextStyle(color: Colors.white, fontSize: 16),
                       ),
                     ),
                   ),
