@@ -90,6 +90,35 @@ class _DataPelangganPageState extends State<DataPelangganPage> {
               buildLabel('Alamat'),
               buildInputField(controller: alamatController, hintText: 'Alamat'),
               const SizedBox(height: 16),
+              Row(
+                children: [
+                  Expanded(
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        buildLabel('Provinsi'),
+                        buildInputField(
+                          controller: provinsiController,
+                          hintText: 'Provinsi',
+                        ),
+                      ],
+                    ),
+                  ),
+                  const SizedBox(width: 16),
+                  Expanded(
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        buildLabel('Kode Pos'),
+                        buildInputField(
+                          controller: kodePosController,
+                          hintText: 'Kode Pos',
+                        ),
+                      ],
+                    ),
+                  ),
+                ],
+              ),
             ],
           ),
         ),
