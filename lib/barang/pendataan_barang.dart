@@ -115,6 +115,62 @@ class _PendataanBarangPageState extends State<PendataanBarangPage> {
                 });
               },
             ),
+            const SizedBox(height: 24),
+            Row(
+              children: [
+                Expanded(
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      buildLabel('Jumlah Barang'),
+                      const SizedBox(height: 8),
+                      buildInputField(
+                        controller: jumlahBarangController,
+                        hintText: 'Jumlah Barang',
+                      ),
+                    ],
+                  ),
+                ),
+                const SizedBox(width: 16),
+                Expanded(
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      buildLabel('Harga Satuan'),
+                      const SizedBox(height: 8),
+                      TextFormField(
+                        controller: hargaSatuanController,
+                        keyboardType: TextInputType.number,
+                        decoration: InputDecoration(
+                          prefixText: 'Rp. ',
+                          hintText: 'Harga Satuan',
+                          filled: true,
+                          fillColor: Colors.white,
+                          contentPadding: const EdgeInsets.symmetric(
+                            vertical: 20,
+                            horizontal: 16,
+                          ),
+                          border: OutlineInputBorder(
+                            borderRadius: BorderRadius.circular(16),
+                            borderSide: const BorderSide(color: Colors.black26),
+                          ),
+                          enabledBorder: OutlineInputBorder(
+                            borderRadius: BorderRadius.circular(16),
+                            borderSide: const BorderSide(color: Colors.black26),
+                          ),
+                          focusedBorder: OutlineInputBorder(
+                            borderRadius: BorderRadius.circular(16),
+                            borderSide: const BorderSide(
+                              color: Colors.redAccent,
+                            ),
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+              ],
+            ),
           ],
         ),
       ),
