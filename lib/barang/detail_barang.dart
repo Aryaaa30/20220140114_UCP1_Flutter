@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
+import 'package:session5_ucp1/home_page.dart'; // Tambahkan ini
 
 class DetailDataPage extends StatelessWidget {
   final String tanggal;
@@ -73,7 +74,16 @@ class DetailDataPage extends StatelessWidget {
                 height: 56,
                 child: ElevatedButton(
                   onPressed: () {
-                    Navigator.pop(context);
+                    Navigator.pushAndRemoveUntil(
+                      context,
+                      MaterialPageRoute(
+                        builder:
+                            (context) => HomePage(
+                              username: 'User',
+                            ), // Ganti username sesuai kebutuhan
+                      ),
+                      (Route<dynamic> route) => false,
+                    );
                   },
                   style: ElevatedButton.styleFrom(
                     backgroundColor: Colors.redAccent,

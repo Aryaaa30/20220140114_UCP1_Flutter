@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:session5_ucp1/home_page.dart'; // Import HomePage
 
 class DetailPelangganPage extends StatelessWidget {
   final String nama;
@@ -32,7 +33,11 @@ class DetailPelangganPage extends StatelessWidget {
         leading: IconButton(
           icon: const Icon(Icons.arrow_back, color: Colors.white),
           onPressed: () {
-            Navigator.pop(context);
+            Navigator.pushAndRemoveUntil(
+              context,
+              MaterialPageRoute(builder: (context) => HomePage(username: nama)),
+              (Route<dynamic> route) => false,
+            );
           },
         ),
       ),
@@ -102,7 +107,13 @@ class DetailPelangganPage extends StatelessWidget {
                   ),
                 ),
                 onPressed: () {
-                  Navigator.pop(context);
+                  Navigator.pushAndRemoveUntil(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => HomePage(username: nama),
+                    ),
+                    (Route<dynamic> route) => false,
+                  );
                 },
                 child: const Text(
                   'Selesai',

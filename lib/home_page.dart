@@ -4,9 +4,9 @@ import 'package:session5_ucp1/pelanggan/data_pelanggan_page.dart';
 import 'package:session5_ucp1/barang/pendataan_barang.dart';
 
 class HomePage extends StatefulWidget {
-  final String username;
+  final String? username;
 
-  const HomePage({super.key, required this.username});
+  const HomePage({super.key, this.username});
 
   @override
   State<HomePage> createState() => _HomePageState();
@@ -41,7 +41,7 @@ class _HomePageState extends State<HomePage> {
                             style: TextStyle(color: Colors.white, fontSize: 16),
                           ),
                           Text(
-                            widget.username, // tampilkan username yang login
+                            widget.username ?? 'Pengguna',
                             style: const TextStyle(
                               color: Colors.white,
                               fontWeight: FontWeight.bold,
@@ -107,7 +107,7 @@ class _HomePageState extends State<HomePage> {
                                 MaterialPageRoute(
                                   builder:
                                       (context) => PiketGudangPage(
-                                        username: widget.username,
+                                        username: widget.username ?? '',
                                       ),
                                 ),
                               );
