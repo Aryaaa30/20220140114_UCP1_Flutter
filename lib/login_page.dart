@@ -84,7 +84,7 @@ class _LoginPageState extends State<LoginPage> {
                   ),
                   validator: (value) {
                     if (value == null || value.isEmpty) {
-                      return 'Please enter your email';
+                      return 'Email Tidak Boleh Kosong';
                     }
                     return null;
                   },
@@ -130,7 +130,7 @@ class _LoginPageState extends State<LoginPage> {
                   ),
                   validator: (value) {
                     if (value == null || value.isEmpty) {
-                      return 'Please enter your password';
+                      return 'Password Tidak Boleh Kosong';
                     }
                     return null;
                   },
