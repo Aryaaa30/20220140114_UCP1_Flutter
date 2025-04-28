@@ -42,6 +42,12 @@ class DetailPelangganPage extends StatelessWidget {
                   'l.adnan@mail.com',
                   style: TextStyle(fontSize: 16, color: Colors.black54),
                 ),
+                const SizedBox(height: 4),
+                const Text(
+                  '08112212',
+                  style: TextStyle(fontSize: 16, color: Colors.black54),
+                ),
+                const SizedBox(height: 32),
               ],
             ),
           ),
