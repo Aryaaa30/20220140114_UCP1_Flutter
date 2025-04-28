@@ -49,7 +49,7 @@ class _LoginPageState extends State<LoginPage> {
                         'SELAMAT DATANG KEMBALI',
                         style: TextStyle(
                           fontSize: 22,
-                          color: Colors.brown,
+                          color: Colors.white,
                           fontWeight: FontWeight.bold,
                         ),
                       ),

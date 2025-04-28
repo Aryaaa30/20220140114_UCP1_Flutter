@@ -29,7 +29,11 @@ class _RegisterPageState extends State<RegisterPage> {
         height: double.infinity,
         decoration: const BoxDecoration(
           gradient: LinearGradient(
-            colors: [Color(0xFFD2691E), Color(0xFF3E2723)],
+            colors: [
+              Color.fromARGB(255, 174, 141, 80), // wheat color (krem kayu)
+              Color(0xFFDEB887), // burlywood (coklat muda kayu)
+              Color(0xFF8B4513), // saddle brown (kayu coklat tua)
+            ],
             begin: Alignment.topCenter,
             end: Alignment.bottomCenter,
           ),
@@ -45,26 +49,33 @@ class _RegisterPageState extends State<RegisterPage> {
                   Center(
                     child: Column(
                       children: [
-                        Image.asset('assets/register.png', height: 200),
-                        const SizedBox(height: 10),
+                        Image.asset('assets/logo.png', height: 250),
+                        const SizedBox(height: 5),
                         const Text(
                           'DAFTAR AKUN BARU',
                           style: TextStyle(
-                            fontSize: 24,
-                            color: Colors.white,
+                            fontSize: 22, // Sesuaikan dengan LoginPage
+                            color: Colors.white, // Ubah warna untuk kontras
                             fontWeight: FontWeight.bold,
+                            shadows: [
+                              Shadow(
+                                color: Colors.black54,
+                                offset: Offset(1, 1),
+                                blurRadius: 3,
+                              ),
+                            ],
                           ),
                           textAlign: TextAlign.center,
                         ),
                       ],
                     ),
                   ),
-                  const SizedBox(height: 20),
+                  const SizedBox(height: 30),
 
                   buildLabel("Nama Lengkap"),
                   customInputField(
                     controller: nameController,
-                    label: "Nama Lengkap",
+                    label: "Masukkan Nama Lengkap",
                     icon: Icons.person,
                     validatorMsg: "Masukkan nama lengkap",
                   ),
@@ -79,7 +90,7 @@ class _RegisterPageState extends State<RegisterPage> {
                             buildLabel("Email"),
                             customInputField(
                               controller: emailController,
-                              label: "Email",
+                              label: "Masukkan Email",
                               icon: Icons.email,
                               validatorMsg: "Masukkan email",
                             ),
@@ -94,7 +105,7 @@ class _RegisterPageState extends State<RegisterPage> {
                             buildLabel("No HP"),
                             customInputField(
                               controller: phoneController,
-                              label: "No HP",
+                              label: "Masukkan No HP",
                               icon: Icons.phone,
                               keyboardType: TextInputType.phone,
                               validatorMsg: "Masukkan nomor HP",
@@ -115,7 +126,7 @@ class _RegisterPageState extends State<RegisterPage> {
                             buildLabel("Password"),
                             customInputField(
                               controller: passwordController,
-                              label: "Password",
+                              label: "Masukkan Password",
                               icon: Icons.lock,
                               obscureText: _obscurePassword,
                               validatorMsg: "Masukkan password",
@@ -124,7 +135,7 @@ class _RegisterPageState extends State<RegisterPage> {
                                   _obscurePassword
                                       ? Icons.visibility_off
                                       : Icons.visibility,
-                                  color: Colors.grey,
+                                  color: Colors.brown,
                                 ),
                                 onPressed: () {
                                   setState(() {
@@ -144,7 +155,7 @@ class _RegisterPageState extends State<RegisterPage> {
                             buildLabel("Konfirmasi Password"),
                             customInputField(
                               controller: confirmPasswordController,
-                              label: "Konfirmasi Password",
+                              label: "Masukkan Konfirmasi Password",
                               icon: Icons.lock_outline,
                               obscureText: _obscureConfirmPassword,
                               validator: (value) {
@@ -160,7 +171,7 @@ class _RegisterPageState extends State<RegisterPage> {
                                   _obscureConfirmPassword
                                       ? Icons.visibility_off
                                       : Icons.visibility,
-                                  color: Colors.grey,
+                                  color: Colors.brown,
                                 ),
                                 onPressed: () {
                                   setState(() {
@@ -175,27 +186,25 @@ class _RegisterPageState extends State<RegisterPage> {
                       ),
                     ],
                   ),
-                  const SizedBox(height: 30),
+                  const SizedBox(height: 50),
 
                   Center(
                     child: SizedBox(
                       width: 300,
                       child: ElevatedButton(
                         style: ElevatedButton.styleFrom(
-                          backgroundColor: const Color.fromARGB(
-                            255,
-                            193,
-                            100,
-                            34,
-                          ),
-                          padding: const EdgeInsets.symmetric(vertical: 16),
+                          backgroundColor: const Color(
+                            0xFF8B4513,
+                          ), // saddle brown
+                          padding: const EdgeInsets.symmetric(vertical: 14),
                           shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(30),
                           ),
+                          elevation:
+                              5, // Tambahkan efek elevasi seperti LoginPage
                         ),
                         onPressed: () {
                           if (_formKey.currentState!.validate()) {
-                            // Navigasi ke HomePage sambil bawa nama user
                             Navigator.pushReplacement(
                               context,
                               MaterialPageRoute(
@@ -208,19 +217,32 @@ class _RegisterPageState extends State<RegisterPage> {
                         },
                         child: const Text(
                           'REGISTER',
-                          style: TextStyle(color: Colors.white, fontSize: 16),
+                          style: TextStyle(
+                            color: Colors.white,
+                            fontSize: 16,
+                            fontWeight: FontWeight.bold,
+                          ),
                         ),
                       ),
                     ),
                   ),
-                  const SizedBox(height: 20),
+                  const SizedBox(height: 16),
 
                   Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       const Text(
                         'Sudah memiliki akun? Silahkan',
-                        style: TextStyle(color: Colors.white),
+                        style: TextStyle(
+                          color: Colors.brown, // Ubah warna untuk kontras
+                          shadows: [
+                            Shadow(
+                              color: Colors.black54,
+                              offset: Offset(1, 1),
+                              blurRadius: 2,
+                            ),
+                          ],
+                        ),
                       ),
                       TextButton(
                         onPressed: () {
@@ -229,8 +251,15 @@ class _RegisterPageState extends State<RegisterPage> {
                         child: const Text(
                           'Login Disini',
                           style: TextStyle(
-                            color: Colors.orangeAccent,
+                            color: Colors.white, // Sesuaikan dengan LoginPage
                             fontWeight: FontWeight.bold,
+                            shadows: [
+                              Shadow(
+                                color: Colors.black54,
+                                offset: Offset(1, 1),
+                                blurRadius: 2,
+                              ),
+                            ],
                           ),
                         ),
                       ),
@@ -285,10 +314,10 @@ class _RegisterPageState extends State<RegisterPage> {
   ]) {
     return InputDecoration(
       labelText: label,
-      labelStyle: const TextStyle(color: Colors.black),
+      labelStyle: const TextStyle(color: Colors.black54),
       filled: true,
-      fillColor: Colors.white,
-      prefixIcon: Icon(icon),
+      fillColor: Colors.white.withOpacity(0.9), // Sesuaikan dengan LoginPage
+      prefixIcon: Icon(icon, color: Colors.brown), // Warna ikon cokelat
       suffixIcon: suffixIcon,
       border: OutlineInputBorder(borderRadius: BorderRadius.circular(30)),
     );
@@ -298,9 +327,12 @@ class _RegisterPageState extends State<RegisterPage> {
     return Text(
       text,
       style: const TextStyle(
-        color: Colors.white,
+        color: Colors.white, // Ubah warna untuk kontras
         fontSize: 16,
         fontWeight: FontWeight.bold,
+        shadows: [
+          Shadow(color: Colors.black54, offset: Offset(1, 1), blurRadius: 2),
+        ],
       ),
     );
   }
