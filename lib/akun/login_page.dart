@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:session5_ucp1/home_page.dart';
-import 'package:session5_ucp1/register_page.dart';
+import 'package:session5_ucp1/akun/register_page.dart';
 
 class LoginPage extends StatefulWidget {
   const LoginPage({super.key});

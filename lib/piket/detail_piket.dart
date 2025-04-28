@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:session5_ucp1/home_page.dart';
-import 'package:session5_ucp1/piket_gudang.dart';
+import 'package:session5_ucp1/piket/detail_piket.dart';
 
 class DetailMenyapuPage extends StatelessWidget {
   final String nama;

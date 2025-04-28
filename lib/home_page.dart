@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:session5_ucp1/piket_gudang.dart';
+import 'package:session5_ucp1/piket/data_piket.dart';
 import 'package:session5_ucp1/pelanggan/data_pelanggan_page.dart';
 import 'package:session5_ucp1/barang/pendataan_barang.dart';
 

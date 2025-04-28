@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:session5_ucp1/detail_menyapu_page.dart';
+import 'package:session5_ucp1/piket/detail_piket.dart';
 
 class PiketGudangPage extends StatefulWidget {
   final String username;

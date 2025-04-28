@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:session5_ucp1/home_page.dart';
-import 'package:session5_ucp1/login_page.dart';
-import 'package:session5_ucp1/piket_gudang.dart';
+import 'package:session5_ucp1/akun/login_page.dart';
+import 'package:session5_ucp1/piket/data_piket.dart';
 
 void main() {
   runApp(const MyApp());
