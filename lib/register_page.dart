@@ -62,7 +62,7 @@ class _RegisterPageState extends State<RegisterPage> {
                   ),
                   const SizedBox(height: 10),
 
-                  // [commit] Membuat Email dan No HP sejajar (Row)
+                  // Membuat Email dan No HP sejajar (Row)
                   Row(
                     children: [
                       Expanded(
@@ -87,29 +87,36 @@ class _RegisterPageState extends State<RegisterPage> {
                   ),
                   const SizedBox(height: 10),
 
-                  // Password
-                  customInputField(
-                    controller: passwordController,
-                    label: "Password",
-                    icon: Icons.lock,
-                    obscureText: true,
-                    validatorMsg: "Masukkan password",
-                  ),
-
-                  // Konfirmasi Password
-                  customInputField(
-                    controller: confirmPasswordController,
-                    label: "Konfirmasi Password",
-                    icon: Icons.lock_outline,
-                    obscureText: true,
-                    validator: (value) {
-                      if (value == null || value.isEmpty) {
-                        return "Konfirmasi password wajib diisi";
-                      } else if (value != passwordController.text) {
-                        return "Password tidak sama";
-                      }
-                      return null;
-                    },
+                  // Membuat Password dan Konfirmasi Password sejajar (Row)
+                  Row(
+                    children: [
+                      Expanded(
+                        child: customInputField(
+                          controller: passwordController,
+                          label: "Password",
+                          icon: Icons.lock,
+                          obscureText: true,
+                          validatorMsg: "Masukkan password",
+                        ),
+                      ),
+                      const SizedBox(width: 10),
+                      Expanded(
+                        child: customInputField(
+                          controller: confirmPasswordController,
+                          label: "Konfirmasi Password",
+                          icon: Icons.lock_outline,
+                          obscureText: true,
+                          validator: (value) {
+                            if (value == null || value.isEmpty) {
+                              return "Konfirmasi password wajib diisi";
+                            } else if (value != passwordController.text) {
+                              return "Password tidak sama";
+                            }
+                            return null;
+                          },
+                        ),
+                      ),
+                    ],
                   ),
 
                   const SizedBox(height: 30),
