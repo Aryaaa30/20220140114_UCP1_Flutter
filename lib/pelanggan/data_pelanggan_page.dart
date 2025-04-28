@@ -139,6 +139,30 @@ class _DataPelangganPageState extends State<DataPelangganPage> {
                 ),
               ),
               const SizedBox(height: 16),
+              SizedBox(
+                width: double.infinity,
+                height: 56,
+                child: OutlinedButton(
+                  style: OutlinedButton.styleFrom(
+                    side: const BorderSide(color: Colors.redAccent),
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(16),
+                    ),
+                  ),
+                  onPressed: () {
+                    namaController.clear();
+                    emailController.clear();
+                    noHpController.clear();
+                    alamatController.clear();
+                    provinsiController.clear();
+                    kodePosController.clear();
+                  },
+                  child: const Text(
+                    'Reset',
+                    style: TextStyle(color: Colors.redAccent, fontSize: 16),
+                  ),
+                ),
+              ),
             ],
           ),
         ),
