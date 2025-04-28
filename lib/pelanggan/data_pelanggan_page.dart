@@ -119,6 +119,26 @@ class _DataPelangganPageState extends State<DataPelangganPage> {
                   ),
                 ],
               ),
+              const SizedBox(height: 32),
+              SizedBox(
+                width: double.infinity,
+                height: 56,
+                child: ElevatedButton(
+                  style: ElevatedButton.styleFrom(
+                    backgroundColor: Colors.redAccent,
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(16),
+                    ),
+                  ),
+                  onPressed: () {
+                    if (_formKey.currentState!.validate()) {
+                      // Do something
+                    }
+                  },
+                  child: const Text('Simpan', style: TextStyle(fontSize: 16)),
+                ),
+              ),
+              const SizedBox(height: 16),
             ],
           ),
         ),
