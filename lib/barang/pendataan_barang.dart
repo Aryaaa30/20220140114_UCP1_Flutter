@@ -29,6 +29,107 @@ class _PendataanBarangPageState extends State<PendataanBarangPage> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold();
+    return Scaffold(
+      backgroundColor: const Color(0xFFFCF6F3),
+      appBar: AppBar(
+        backgroundColor: Colors.redAccent,
+        title: const Text(
+          'Pendataan Barang',
+          style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold),
+        ),
+        centerTitle: true,
+        leading: IconButton(
+          icon: const Icon(Icons.arrow_back, color: Colors.white),
+          onPressed: () {
+            Navigator.pop(context);
+          },
+        ),
+      ),
+      body: SingleChildScrollView(
+        padding: const EdgeInsets.all(16),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            buildLabel('Tanggal Transaksi'),
+            const SizedBox(height: 8),
+            TextFormField(
+              controller: tanggalController,
+              readOnly: true,
+              onTap: () async {
+                DateTime? pickedDate = await showDatePicker(
+                  context: context,
+                  initialDate: DateTime.now(),
+                  firstDate: DateTime(2000),
+                  lastDate: DateTime(2101),
+                );
+                if (pickedDate != null) {
+                  tanggalController.text =
+                      "${pickedDate.day}/${pickedDate.month}/${pickedDate.year}";
+                }
+              },
+              decoration: InputDecoration(
+                hintText: 'Tanggal Transaksi',
+                prefixIcon: const Icon(
+                  Icons.calendar_today,
+                  color: Colors.black54,
+                ),
+                filled: true,
+                fillColor: Colors.white,
+                contentPadding: const EdgeInsets.symmetric(
+                  vertical: 20,
+                  horizontal: 16,
+                ),
+                border: OutlineInputBorder(
+                  borderRadius: BorderRadius.circular(16),
+                  borderSide: const BorderSide(color: Colors.black26),
+                ),
+                enabledBorder: OutlineInputBorder(
+                  borderRadius: BorderRadius.circular(16),
+                  borderSide: const BorderSide(color: Colors.black26),
+                ),
+                focusedBorder: OutlineInputBorder(
+                  borderRadius: BorderRadius.circular(16),
+                  borderSide: const BorderSide(color: Colors.redAccent),
+                ),
+              ),
+            ),
+          ],
+        ),
+      ),
+    );
   }
+}
+
+Widget buildLabel(String text) {
+  return Text(
+    text,
+    style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 14),
+  );
+}
+
+Widget buildInputField({
+  required TextEditingController controller,
+  required String hintText,
+}) {
+  return TextFormField(
+    controller: controller,
+    decoration: InputDecoration(
+      hintText: hintText,
+      filled: true,
+      fillColor: Colors.white,
+      contentPadding: const EdgeInsets.symmetric(vertical: 20, horizontal: 16),
+      border: OutlineInputBorder(
+        borderRadius: BorderRadius.circular(16),
+        borderSide: const BorderSide(color: Colors.black26),
+      ),
+      enabledBorder: OutlineInputBorder(
+        borderRadius: BorderRadius.circular(16),
+        borderSide: const BorderSide(color: Colors.black26),
+      ),
+      focusedBorder: OutlineInputBorder(
+        borderRadius: BorderRadius.circular(16),
+        borderSide: const BorderSide(color: Colors.redAccent),
+      ),
+    ),
+  );
 }
