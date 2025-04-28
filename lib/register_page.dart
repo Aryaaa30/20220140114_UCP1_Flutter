@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 
 class RegisterPage extends StatefulWidget {
-  // memiliki status yang bisa berubah
   const RegisterPage({super.key});
 
   @override
@@ -50,75 +49,143 @@ class _RegisterPageState extends State<RegisterPage> {
                       fontWeight: FontWeight.bold,
                     ),
                   ),
-                  const SizedBox(height: 10),
+                  const SizedBox(height: 20),
 
                   // Nama Lengkap
-                  customInputField(
-                    // untuk menghindari penulisan berulang
-                    controller: nameController,
-                    label: "Nama Lengkap",
-                    icon: Icons.person,
-                    validatorMsg: "Masukkan nama lengkap",
+                  Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      const Text(
+                        "Nama Lengkap",
+                        style: TextStyle(
+                          color: Colors.white,
+                          fontSize: 16,
+                          fontWeight: FontWeight.bold,
+                        ),
+                      ),
+                      const SizedBox(height: 5),
+                      customInputField(
+                        controller: nameController,
+                        label: "Nama Lengkap",
+                        icon: Icons.person,
+                        validatorMsg: "Masukkan nama lengkap",
+                      ),
+                    ],
                   ),
                   const SizedBox(height: 10),
 
-                  // Membuat Email dan No HP sejajar (Row)
+                  // Email dan No HP sejajar
                   Row(
                     children: [
                       Expanded(
-                        child: customInputField(
-                          controller: emailController,
-                          label: "Email",
-                          icon: Icons.email,
-                          validatorMsg: "Masukkan email",
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            const Text(
+                              "Email",
+                              style: TextStyle(
+                                color: Colors.white,
+                                fontSize: 16,
+                                fontWeight: FontWeight.bold,
+                              ),
+                            ),
+                            const SizedBox(height: 5),
+                            customInputField(
+                              controller: emailController,
+                              label: "Email",
+                              icon: Icons.email,
+                              validatorMsg: "Masukkan email",
+                            ),
+                          ],
                         ),
                       ),
                       const SizedBox(width: 10),
                       Expanded(
-                        child: customInputField(
-                          controller: phoneController,
-                          label: "No HP",
-                          icon: Icons.phone,
-                          keyboardType: TextInputType.phone,
-                          validatorMsg: "Masukkan nomor HP",
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            const Text(
+                              "No HP",
+                              style: TextStyle(
+                                color: Colors.white,
+                                fontSize: 16,
+                                fontWeight: FontWeight.bold,
+                              ),
+                            ),
+                            const SizedBox(height: 5),
+                            customInputField(
+                              controller: phoneController,
+                              label: "No HP",
+                              icon: Icons.phone,
+                              keyboardType: TextInputType.phone,
+                              validatorMsg: "Masukkan nomor HP",
+                            ),
+                          ],
                         ),
                       ),
                     ],
                   ),
                   const SizedBox(height: 10),
 
-                  // Membuat Password dan Konfirmasi Password sejajar (Row)
+                  // Password dan Konfirmasi Password sejajar
                   Row(
                     children: [
                       Expanded(
-                        child: customInputField(
-                          controller: passwordController,
-                          label: "Password",
-                          icon: Icons.lock,
-                          obscureText: true,
-                          validatorMsg: "Masukkan password",
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            const Text(
+                              "Password",
+                              style: TextStyle(
+                                color: Colors.white,
+                                fontSize: 16,
+                                fontWeight: FontWeight.bold,
+                              ),
+                            ),
+                            const SizedBox(height: 5),
+                            customInputField(
+                              controller: passwordController,
+                              label: "Password",
+                              icon: Icons.lock,
+                              obscureText: true,
+                              validatorMsg: "Masukkan password",
+                            ),
+                          ],
                         ),
                       ),
                       const SizedBox(width: 10),
                       Expanded(
-                        child: customInputField(
-                          controller: confirmPasswordController,
-                          label: "Konfirmasi Password",
-                          icon: Icons.lock_outline,
-                          obscureText: true,
-                          validator: (value) {
-                            if (value == null || value.isEmpty) {
-                              return "Konfirmasi password wajib diisi";
-                            } else if (value != passwordController.text) {
-                              return "Password tidak sama";
-                            }
-                            return null;
-                          },
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            const Text(
+                              "Konfirmasi Password",
+                              style: TextStyle(
+                                color: Colors.white,
+                                fontSize: 16,
+                                fontWeight: FontWeight.bold,
+                              ),
+                            ),
+                            const SizedBox(height: 5),
+                            customInputField(
+                              controller: confirmPasswordController,
+                              label: "Konfirmasi Password",
+                              icon: Icons.lock_outline,
+                              obscureText: true,
+                              validator: (value) {
+                                if (value == null || value.isEmpty) {
+                                  return "Konfirmasi password wajib diisi";
+                                } else if (value != passwordController.text) {
+                                  return "Password tidak sama";
+                                }
+                                return null;
+                              },
+                            ),
+                          ],
                         ),
                       ),
                     ],
                   ),
-
                   const SizedBox(height: 30),
 
                   // Tombol Register
@@ -185,9 +252,7 @@ class _RegisterPageState extends State<RegisterPage> {
 
   // Fungsi field reusable
   Widget customInputField({
-    //Mengurangi duplikasi kode, menyederhanakan
-    required TextEditingController
-    controller, //pembuatan input dengan parameter.
+    required TextEditingController controller,
     required String label,
     required IconData icon,
     String? Function(String?)? validator,
