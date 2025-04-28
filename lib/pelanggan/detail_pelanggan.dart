@@ -37,6 +37,11 @@ class DetailPelangganPage extends StatelessWidget {
                   'Lucky Adnan',
                   style: TextStyle(fontSize: 22, fontWeight: FontWeight.bold),
                 ),
+                const SizedBox(height: 8),
+                const Text(
+                  'l.adnan@mail.com',
+                  style: TextStyle(fontSize: 16, color: Colors.black54),
+                ),
               ],
             ),
           ),
