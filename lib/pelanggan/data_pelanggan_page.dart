@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:session5_ucp1/pelanggan/detail_pelanggan.dart';
 
 void main() {
   runApp(
@@ -132,7 +133,20 @@ class _DataPelangganPageState extends State<DataPelangganPage> {
                   ),
                   onPressed: () {
                     if (_formKey.currentState!.validate()) {
-                      // Do something
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder:
+                              (context) => DetailPelangganPage(
+                                nama: namaController.text,
+                                email: emailController.text,
+                                noHp: noHpController.text,
+                                alamat: alamatController.text,
+                                provinsi: provinsiController.text,
+                                kodePos: kodePosController.text,
+                              ),
+                        ),
+                      );
                     }
                   },
                   child: const Text('Simpan', style: TextStyle(fontSize: 16)),
