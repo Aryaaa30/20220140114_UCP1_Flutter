@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:session5_ucp1/piket_gudang.dart'; // Pastikan import ini sudah benar
+import 'package:session5_ucp1/piket_gudang.dart';
+import 'package:session5_ucp1/pelanggan/data_pelanggan_page.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -111,7 +112,13 @@ class _HomePageState extends State<HomePage> {
                             icon: Icons.grid_view_rounded,
                             label: 'Data Pelanggan',
                             onTap: () {
-                              // Nanti bisa diisi sesuai kebutuhan
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                  builder:
+                                      (context) => const DataPelangganPage(),
+                                ),
+                              );
                             },
                           ),
                         ),
