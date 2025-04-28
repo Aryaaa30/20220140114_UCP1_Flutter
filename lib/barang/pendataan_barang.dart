@@ -26,8 +26,15 @@ class _PendataanBarangPageState extends State<PendataanBarangPage> {
   String? selectedJenisTransaksi;
   String? selectedJenisBarang;
 
-  final List<String> jenisTransaksiList = ['Beli', 'Jual'];
-  final List<String> jenisBarangList = ['Elektronik', 'Pakaian', 'Makanan'];
+  final List<String> jenisTransaksiList = ['Barang Masuk', 'Barang Keluar'];
+  final List<String> jenisBarangList = ['Meja', 'Kursi', 'Televisi'];
+
+  // Tambahkan mapping harga satuan
+  final Map<String, int> hargaBarang = {
+    'Meja': 500000,
+    'Kursi': 250000,
+    'Televisi': 3000000,
+  };
 
   @override
   Widget build(BuildContext context) {
@@ -110,6 +117,8 @@ class _PendataanBarangPageState extends State<PendataanBarangPage> {
                 onChanged: (value) {
                   setState(() {
                     selectedJenisBarang = value;
+                    // Saat barang dipilih, harga satuannya langsung di-set
+                    hargaSatuanController.text = hargaBarang[value]!.toString();
                   });
                 },
                 validator: (value) {
@@ -153,9 +162,10 @@ class _PendataanBarangPageState extends State<PendataanBarangPage> {
                         TextFormField(
                           controller: hargaSatuanController,
                           keyboardType: TextInputType.number,
+                          readOnly: true, // Biar user tidak bisa edit manual
                           validator: (value) {
                             if (value == null || value.isEmpty) {
-                              return 'Jumlah barang tidak boleh kosong';
+                              return 'Harga satuan tidak boleh kosong';
                             }
                             return null;
                           },
