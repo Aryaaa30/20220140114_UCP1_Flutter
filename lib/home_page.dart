@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:session5_ucp1/piket_gudang.dart';
 import 'package:session5_ucp1/pelanggan/data_pelanggan_page.dart';
+import 'package:session5_ucp1/barang/pendataan_barang.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -129,7 +130,12 @@ class _HomePageState extends State<HomePage> {
                       icon: Icons.receipt_long,
                       label: 'Barang Masuk/Keluar',
                       onTap: () {
-                        // Nanti bisa diisi sesuai kebutuhan
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => const PendataanBarangPage(),
+                          ),
+                        );
                       },
                       fullWidth: true,
                     ),
