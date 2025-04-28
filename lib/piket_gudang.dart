@@ -98,6 +98,29 @@ class _PiketGudangPageState extends State<PiketGudangPage> {
                 ),
               ],
             ),
+            const SizedBox(height: 32),
+            const Center(
+              child: Text(
+                'Daftar Tugas Piket',
+                style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+              ),
+            ),
+            const SizedBox(height: 16),
+            daftarTugas.isEmpty
+                ? const Center(child: Text('Belum ada Data'))
+                : ListView.builder(
+                  shrinkWrap: true,
+                  physics: const NeverScrollableScrollPhysics(),
+                  itemCount: daftarTugas.length,
+                  itemBuilder: (context, index) {
+                    return ListTile(
+                      title: Text(daftarTugas[index]['tugas'] ?? ''),
+                      subtitle: Text(
+                        'Nama: ${daftarTugas[index]['nama']} | Tanggal: ${daftarTugas[index]['tanggal']}',
+                      ),
+                    );
+                  },
+                ),
           ],
         ),
       ),
