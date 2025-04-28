@@ -51,7 +51,10 @@ class DetailDataPage extends StatelessWidget {
               const SizedBox(height: 24),
               const Text(
                 'Data Berhasil Disimpan',
-                style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+                style: TextStyle(
+                  fontSize: 22, // diperbesar
+                  fontWeight: FontWeight.bold,
+                ),
               ),
               const SizedBox(height: 32),
               buildDetailRow('Tanggal', tanggal),
@@ -63,12 +66,14 @@ class DetailDataPage extends StatelessWidget {
               buildDetailRow('Jumlah Barang', jumlahBarang.toString()),
               const Divider(),
               buildDetailRow(
-                'Jenis Harga Satuan',
+                'Harga Satuan',
                 currencyFormat.format(hargaSatuan),
               ),
               const Divider(),
               buildDetailRow('Total Harga', currencyFormat.format(totalHarga)),
-              const Spacer(),
+              const SizedBox(
+                height: 100,
+              ), // Spacer diganti supaya tombolnya naik sedikit
               SizedBox(
                 width: double.infinity,
                 height: 56,
@@ -86,12 +91,19 @@ class DetailDataPage extends StatelessWidget {
                     );
                   },
                   style: ElevatedButton.styleFrom(
-                    backgroundColor: Colors.redAccent,
+                    backgroundColor: Colors.brown,
                     shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(24),
                     ),
                   ),
-                  child: const Text('Selesai', style: TextStyle(fontSize: 16)),
+                  child: const Text(
+                    'Selesai',
+                    style: TextStyle(
+                      color: Colors.white,
+                      fontSize: 18,
+                      fontWeight: FontWeight.bold,
+                    ), // diperbesar
+                  ),
                 ),
               ),
               const SizedBox(height: 24),
@@ -105,19 +117,24 @@ class DetailDataPage extends StatelessWidget {
 
 Widget buildDetailRow(String title, String value) {
   return Padding(
-    padding: const EdgeInsets.symmetric(vertical: 8),
+    padding: const EdgeInsets.symmetric(vertical: 10),
     child: Row(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
         Text(
           title,
-          style: const TextStyle(fontSize: 14, fontWeight: FontWeight.bold),
+          style: const TextStyle(
+            fontSize: 20, // diperbesar
+            fontWeight: FontWeight.bold,
+          ),
         ),
         Flexible(
           child: Text(
             value,
             textAlign: TextAlign.end,
-            style: const TextStyle(fontSize: 14),
+            style: const TextStyle(
+              fontSize: 16, // diperbesar
+            ),
           ),
         ),
       ],
