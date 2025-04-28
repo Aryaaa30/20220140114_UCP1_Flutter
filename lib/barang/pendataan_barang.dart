@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:session5_ucp1/barang/detail_barang.dart';
 
 void main() {
   runApp(
@@ -192,10 +193,21 @@ class _PendataanBarangPageState extends State<PendataanBarangPage> {
                   ),
                   onPressed: () {
                     if (_formKey.currentState!.validate()) {
-                      // Semua validasi sukses
-                      ScaffoldMessenger.of(context).showSnackBar(
-                        const SnackBar(
-                          content: Text('Data berhasil disubmit!'),
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder:
+                              (context) => DetailDataPage(
+                                tanggal: tanggalController.text,
+                                jenisTransaksi: selectedJenisTransaksi!,
+                                jenisBarang: selectedJenisBarang!,
+                                jumlahBarang: int.parse(
+                                  jumlahBarangController.text,
+                                ),
+                                hargaSatuan: int.parse(
+                                  hargaSatuanController.text,
+                                ),
+                              ),
                         ),
                       );
                     }
