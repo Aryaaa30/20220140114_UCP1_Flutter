@@ -43,7 +43,7 @@ class _RegisterPageState extends State<RegisterPage> {
                   Image.asset('assets/register.png', height: 200),
                   const SizedBox(height: 10),
                   const Text(
-                    'REGISTER',
+                    'DAFTAR AKUN BARU',
                     style: TextStyle(
                       fontSize: 24,
                       color: Colors.white,
@@ -60,23 +60,32 @@ class _RegisterPageState extends State<RegisterPage> {
                     icon: Icons.person,
                     validatorMsg: "Masukkan nama lengkap",
                   ),
+                  const SizedBox(height: 10),
 
-                  // Email
-                  customInputField(
-                    controller: emailController,
-                    label: "Email",
-                    icon: Icons.email,
-                    validatorMsg: "Masukkan email",
+                  // [commit] Membuat Email dan No HP sejajar (Row)
+                  Row(
+                    children: [
+                      Expanded(
+                        child: customInputField(
+                          controller: emailController,
+                          label: "Email",
+                          icon: Icons.email,
+                          validatorMsg: "Masukkan email",
+                        ),
+                      ),
+                      const SizedBox(width: 10),
+                      Expanded(
+                        child: customInputField(
+                          controller: phoneController,
+                          label: "No HP",
+                          icon: Icons.phone,
+                          keyboardType: TextInputType.phone,
+                          validatorMsg: "Masukkan nomor HP",
+                        ),
+                      ),
+                    ],
                   ),
-
-                  // No HP
-                  customInputField(
-                    controller: phoneController,
-                    label: "Nomor HP",
-                    icon: Icons.phone,
-                    keyboardType: TextInputType.phone,
-                    validatorMsg: "Masukkan nomor HP",
-                  ),
+                  const SizedBox(height: 10),
 
                   // Password
                   customInputField(
