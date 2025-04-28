@@ -2,22 +2,28 @@ import 'package:flutter/material.dart';
 import 'package:session5_ucp1/detail_menyapu_page.dart';
 
 class PiketGudangPage extends StatefulWidget {
-  const PiketGudangPage({super.key});
+  final String username;
+
+  const PiketGudangPage({super.key, required this.username});
 
   @override
   State<PiketGudangPage> createState() => _PiketGudangPageState();
 }
 
 class _PiketGudangPageState extends State<PiketGudangPage> {
-  final TextEditingController namaAnggotaController = TextEditingController(
-    text: 'Admin',
-  );
+  final TextEditingController namaAnggotaController = TextEditingController();
   final TextEditingController tanggalController = TextEditingController();
   final TextEditingController tugasPiketController = TextEditingController();
 
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
 
   final List<Map<String, String>> daftarTugas = [];
+
+  @override
+  void initState() {
+    super.initState();
+    namaAnggotaController.text = widget.username;
+  }
 
   @override
   Widget build(BuildContext context) {

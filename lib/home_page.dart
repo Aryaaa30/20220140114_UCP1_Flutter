@@ -105,7 +105,10 @@ class _HomePageState extends State<HomePage> {
                               Navigator.push(
                                 context,
                                 MaterialPageRoute(
-                                  builder: (context) => const PiketGudangPage(),
+                                  builder:
+                                      (context) => PiketGudangPage(
+                                        username: widget.username,
+                                      ),
                                 ),
                               );
                             },

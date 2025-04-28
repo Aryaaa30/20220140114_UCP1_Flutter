@@ -20,10 +20,7 @@ class MyApp extends StatelessWidget {
         useMaterial3: true,
       ),
       initialRoute: '/login',
-      routes: {
-        '/login': (context) => const LoginPage(),
-        '/order': (context) => const PiketGudangPage(),
-      },
+      routes: {'/login': (context) => const LoginPage()},
     );
   }
 }
