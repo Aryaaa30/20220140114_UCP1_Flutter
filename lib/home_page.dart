@@ -4,7 +4,9 @@ import 'package:session5_ucp1/pelanggan/data_pelanggan_page.dart';
 import 'package:session5_ucp1/barang/pendataan_barang.dart';
 
 class HomePage extends StatefulWidget {
-  const HomePage({super.key});
+  final String username;
+
+  const HomePage({super.key, required this.username});
 
   @override
   State<HomePage> createState() => _HomePageState();
@@ -30,17 +32,17 @@ class _HomePageState extends State<HomePage> {
                       backgroundImage: AssetImage('assets/profile.jpg'),
                     ),
                     const SizedBox(width: 16),
-                    const Expanded(
+                    Expanded(
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          Text(
+                          const Text(
                             'Selamat Datang',
                             style: TextStyle(color: Colors.white, fontSize: 16),
                           ),
                           Text(
-                            'Admin',
-                            style: TextStyle(
+                            widget.username, // tampilkan username yang login
+                            style: const TextStyle(
                               color: Colors.white,
                               fontWeight: FontWeight.bold,
                               fontSize: 20,
@@ -49,11 +51,15 @@ class _HomePageState extends State<HomePage> {
                         ],
                       ),
                     ),
-                    Icon(Icons.logout, color: Colors.white),
+                    IconButton(
+                      icon: const Icon(Icons.logout, color: Colors.white),
+                      onPressed: () {
+                        Navigator.pushReplacementNamed(context, '/login');
+                      },
+                    ),
                   ],
                 ),
               ),
-
               // Banner Promo
               Container(
                 margin: const EdgeInsets.all(16),
@@ -84,7 +90,6 @@ class _HomePageState extends State<HomePage> {
                   ],
                 ),
               ),
-
               // Menu Buttons
               Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 16.0),
@@ -97,7 +102,6 @@ class _HomePageState extends State<HomePage> {
                             icon: Icons.people_alt_outlined,
                             label: 'Data Piket',
                             onTap: () {
-                              // >>>> Ini navigasinya <<<<
                               Navigator.push(
                                 context,
                                 MaterialPageRoute(
@@ -151,7 +155,6 @@ class _HomePageState extends State<HomePage> {
   }
 }
 
-// Widget custom untuk tombol menu
 class MenuCard extends StatelessWidget {
   final IconData icon;
   final String label;

@@ -13,7 +13,7 @@ class _LoginPageState extends State<LoginPage> {
   final TextEditingController emailController = TextEditingController();
   final TextEditingController passwordController = TextEditingController();
   bool _obscureText = true;
-  final _formKey = GlobalKey<FormState>(); // Pindahin ke atas biar lebih rapi
+  final _formKey = GlobalKey<FormState>();
 
   @override
   Widget build(BuildContext context) {
@@ -34,15 +34,12 @@ class _LoginPageState extends State<LoginPage> {
             key: _formKey,
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
-              crossAxisAlignment: CrossAxisAlignment.start, // Tambahkan ini
+              crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Center(
                   child: Column(
                     children: [
-                      Image.asset(
-                        'assets/logo.png', // Ganti sesuai path logo kamu
-                        height: 300,
-                      ),
+                      Image.asset('assets/logo.png', height: 300),
                       const SizedBox(height: 1),
                       const Text(
                         'SELAMAT DATANG KEMBALI',
@@ -56,8 +53,6 @@ class _LoginPageState extends State<LoginPage> {
                   ),
                 ),
                 const SizedBox(height: 30),
-
-                // Label Email
                 const Text(
                   'Email',
                   style: TextStyle(
@@ -67,8 +62,6 @@ class _LoginPageState extends State<LoginPage> {
                   ),
                 ),
                 const SizedBox(height: 8),
-
-                // Field Email
                 TextFormField(
                   controller: emailController,
                   style: const TextStyle(color: Colors.black),
@@ -90,8 +83,6 @@ class _LoginPageState extends State<LoginPage> {
                   },
                 ),
                 const SizedBox(height: 20),
-
-                // Label Password
                 const Text(
                   'Password',
                   style: TextStyle(
@@ -101,8 +92,6 @@ class _LoginPageState extends State<LoginPage> {
                   ),
                 ),
                 const SizedBox(height: 8),
-
-                // Field Password
                 TextFormField(
                   controller: passwordController,
                   obscureText: _obscureText,
@@ -136,8 +125,6 @@ class _LoginPageState extends State<LoginPage> {
                   },
                 ),
                 const SizedBox(height: 50),
-
-                // Tombol Login
                 Center(
                   child: SizedBox(
                     width: 300,
@@ -156,10 +143,11 @@ class _LoginPageState extends State<LoginPage> {
                       ),
                       onPressed: () {
                         if (_formKey.currentState!.validate()) {
+                          String email = emailController.text.trim();
                           Navigator.pushReplacement(
                             context,
                             MaterialPageRoute(
-                              builder: (context) => const HomePage(),
+                              builder: (context) => HomePage(username: email),
                             ),
                           );
                         }
@@ -172,8 +160,6 @@ class _LoginPageState extends State<LoginPage> {
                   ),
                 ),
                 const SizedBox(height: 16),
-
-                // Pindah ke Register
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
