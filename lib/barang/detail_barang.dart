@@ -67,6 +67,23 @@ class DetailDataPage extends StatelessWidget {
               const Divider(),
               buildDetailRow('Total Harga', currencyFormat.format(totalHarga)),
               const Spacer(),
+              SizedBox(
+                width: double.infinity,
+                height: 56,
+                child: ElevatedButton(
+                  onPressed: () {
+                    Navigator.pop(context);
+                  },
+                  style: ElevatedButton.styleFrom(
+                    backgroundColor: Colors.redAccent,
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(24),
+                    ),
+                  ),
+                  child: const Text('Selesai', style: TextStyle(fontSize: 16)),
+                ),
+              ),
+              const SizedBox(height: 24),
             ],
           ),
         ),
