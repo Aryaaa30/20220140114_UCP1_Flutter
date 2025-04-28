@@ -33,6 +33,10 @@ class DetailPelangganPage extends StatelessWidget {
                   backgroundImage: AssetImage('assets/profile.jpg'),
                 ),
                 const SizedBox(height: 16),
+                const Text(
+                  'Lucky Adnan',
+                  style: TextStyle(fontSize: 22, fontWeight: FontWeight.bold),
+                ),
               ],
             ),
           ),
