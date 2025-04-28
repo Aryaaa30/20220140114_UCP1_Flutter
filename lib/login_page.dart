@@ -134,8 +134,11 @@ class _LoginPageState extends State<LoginPage> {
                     width: 300,
                     child: ElevatedButton(
                       style: ElevatedButton.styleFrom(
-                        backgroundColor: const Color(
-                          0xFF8B4513,
+                        backgroundColor: const Color.fromARGB(
+                          255,
+                          139,
+                          69,
+                          19,
                         ), // saddle brown - warna kayu tua
                         padding: const EdgeInsets.symmetric(vertical: 14),
                         shape: RoundedRectangleBorder(
