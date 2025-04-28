@@ -104,6 +104,17 @@ class _PendataanBarangPageState extends State<PendataanBarangPage> {
                 });
               },
             ),
+            const SizedBox(height: 16),
+            buildDropdownField(
+              label: 'Jenis Barang',
+              value: selectedJenisBarang,
+              items: jenisBarangList,
+              onChanged: (value) {
+                setState(() {
+                  selectedJenisBarang = value;
+                });
+              },
+            ),
           ],
         ),
       ),
