@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:session5_ucp1/piket_gudang.dart';
+import 'package:session5_ucp1/piket_gudang.dart'; // Pastikan import ini sudah benar
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -25,9 +25,7 @@ class _HomePageState extends State<HomePage> {
                   children: [
                     const CircleAvatar(
                       radius: 30,
-                      backgroundImage: AssetImage(
-                        'assets/profile.jpg',
-                      ), // ganti sesuai filemu
+                      backgroundImage: AssetImage('assets/profile.jpg'),
                     ),
                     const SizedBox(width: 16),
                     const Expanded(
@@ -62,14 +60,14 @@ class _HomePageState extends State<HomePage> {
                 ),
                 child: Stack(
                   children: [
-                    Image.asset('assets/logo.png'), // Ganti sesuai gambar kamu
-                    Positioned(
+                    Image.asset('assets/logo.png'),
+                    const Positioned(
                       right: 16,
                       top: 16,
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          const Text(
+                          Text(
                             'Dapatkan Diskon\n25% disetiap harinya',
                             style: TextStyle(
                               color: Colors.white,
@@ -77,7 +75,7 @@ class _HomePageState extends State<HomePage> {
                               fontWeight: FontWeight.bold,
                             ),
                           ),
-                          const SizedBox(height: 8),
+                          SizedBox(height: 8),
                         ],
                       ),
                     ),
@@ -96,7 +94,15 @@ class _HomePageState extends State<HomePage> {
                           child: MenuCard(
                             icon: Icons.people_alt_outlined,
                             label: 'Data Piket',
-                            onTap: () {},
+                            onTap: () {
+                              // >>>> Ini navigasinya <<<<
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                  builder: (context) => const PiketGudangPage(),
+                                ),
+                              );
+                            },
                           ),
                         ),
                         const SizedBox(width: 16),
@@ -104,7 +110,9 @@ class _HomePageState extends State<HomePage> {
                           child: MenuCard(
                             icon: Icons.grid_view_rounded,
                             label: 'Data Pelanggan',
-                            onTap: () {},
+                            onTap: () {
+                              // Nanti bisa diisi sesuai kebutuhan
+                            },
                           ),
                         ),
                       ],
@@ -113,7 +121,9 @@ class _HomePageState extends State<HomePage> {
                     MenuCard(
                       icon: Icons.receipt_long,
                       label: 'Barang Masuk/Keluar',
-                      onTap: () {},
+                      onTap: () {
+                        // Nanti bisa diisi sesuai kebutuhan
+                      },
                       fullWidth: true,
                     ),
                     const SizedBox(height: 20),
