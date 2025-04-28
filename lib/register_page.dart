@@ -17,6 +17,9 @@ class _RegisterPageState extends State<RegisterPage> {
   final TextEditingController confirmPasswordController =
       TextEditingController();
 
+  bool _obscurePassword = true;
+  bool _obscureConfirmPassword = true;
+
   String? selectedGender;
 
   @override
@@ -52,25 +55,12 @@ class _RegisterPageState extends State<RegisterPage> {
                   const SizedBox(height: 20),
 
                   // Nama Lengkap
-                  Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      const Text(
-                        "Nama Lengkap",
-                        style: TextStyle(
-                          color: Colors.white,
-                          fontSize: 16,
-                          fontWeight: FontWeight.bold,
-                        ),
-                      ),
-                      const SizedBox(height: 5),
-                      customInputField(
-                        controller: nameController,
-                        label: "Nama Lengkap",
-                        icon: Icons.person,
-                        validatorMsg: "Masukkan nama lengkap",
-                      ),
-                    ],
+                  buildLabel("Nama Lengkap"),
+                  customInputField(
+                    controller: nameController,
+                    label: "Nama Lengkap",
+                    icon: Icons.person,
+                    validatorMsg: "Masukkan nama lengkap",
                   ),
                   const SizedBox(height: 10),
 
@@ -81,15 +71,7 @@ class _RegisterPageState extends State<RegisterPage> {
                         child: Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
-                            const Text(
-                              "Email",
-                              style: TextStyle(
-                                color: Colors.white,
-                                fontSize: 16,
-                                fontWeight: FontWeight.bold,
-                              ),
-                            ),
-                            const SizedBox(height: 5),
+                            buildLabel("Email"),
                             customInputField(
                               controller: emailController,
                               label: "Email",
@@ -104,15 +86,7 @@ class _RegisterPageState extends State<RegisterPage> {
                         child: Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
-                            const Text(
-                              "No HP",
-                              style: TextStyle(
-                                color: Colors.white,
-                                fontSize: 16,
-                                fontWeight: FontWeight.bold,
-                              ),
-                            ),
-                            const SizedBox(height: 5),
+                            buildLabel("No HP"),
                             customInputField(
                               controller: phoneController,
                               label: "No HP",
@@ -134,21 +108,26 @@ class _RegisterPageState extends State<RegisterPage> {
                         child: Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
-                            const Text(
-                              "Password",
-                              style: TextStyle(
-                                color: Colors.white,
-                                fontSize: 16,
-                                fontWeight: FontWeight.bold,
-                              ),
-                            ),
-                            const SizedBox(height: 5),
+                            buildLabel("Password"),
                             customInputField(
                               controller: passwordController,
                               label: "Password",
                               icon: Icons.lock,
-                              obscureText: true,
+                              obscureText: _obscurePassword,
                               validatorMsg: "Masukkan password",
+                              suffixIcon: IconButton(
+                                icon: Icon(
+                                  _obscurePassword
+                                      ? Icons.visibility_off
+                                      : Icons.visibility,
+                                  color: Colors.grey,
+                                ),
+                                onPressed: () {
+                                  setState(() {
+                                    _obscurePassword = !_obscurePassword;
+                                  });
+                                },
+                              ),
                             ),
                           ],
                         ),
@@ -158,20 +137,12 @@ class _RegisterPageState extends State<RegisterPage> {
                         child: Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
-                            const Text(
-                              "Konfirmasi Password",
-                              style: TextStyle(
-                                color: Colors.white,
-                                fontSize: 16,
-                                fontWeight: FontWeight.bold,
-                              ),
-                            ),
-                            const SizedBox(height: 5),
+                            buildLabel("Konfirmasi Password"),
                             customInputField(
                               controller: confirmPasswordController,
                               label: "Konfirmasi Password",
                               icon: Icons.lock_outline,
-                              obscureText: true,
+                              obscureText: _obscureConfirmPassword,
                               validator: (value) {
                                 if (value == null || value.isEmpty) {
                                   return "Konfirmasi password wajib diisi";
@@ -180,6 +151,20 @@ class _RegisterPageState extends State<RegisterPage> {
                                 }
                                 return null;
                               },
+                              suffixIcon: IconButton(
+                                icon: Icon(
+                                  _obscureConfirmPassword
+                                      ? Icons.visibility_off
+                                      : Icons.visibility,
+                                  color: Colors.grey,
+                                ),
+                                onPressed: () {
+                                  setState(() {
+                                    _obscureConfirmPassword =
+                                        !_obscureConfirmPassword;
+                                  });
+                                },
+                              ),
                             ),
                           ],
                         ),
@@ -259,6 +244,7 @@ class _RegisterPageState extends State<RegisterPage> {
     String? validatorMsg,
     bool obscureText = false,
     TextInputType keyboardType = TextInputType.text,
+    Widget? suffixIcon,
   }) {
     return Padding(
       padding: const EdgeInsets.only(bottom: 20),
@@ -269,7 +255,7 @@ class _RegisterPageState extends State<RegisterPage> {
           obscureText: obscureText,
           keyboardType: keyboardType,
           style: const TextStyle(color: Colors.black),
-          decoration: inputStyle(label, icon),
+          decoration: inputStyle(label, icon, suffixIcon),
           validator:
               validator ??
               (value) {
@@ -284,14 +270,31 @@ class _RegisterPageState extends State<RegisterPage> {
   }
 
   // Fungsi dekorasi form
-  InputDecoration inputStyle(String label, IconData icon) {
+  InputDecoration inputStyle(
+    String label,
+    IconData icon, [
+    Widget? suffixIcon,
+  ]) {
     return InputDecoration(
       labelText: label,
       labelStyle: const TextStyle(color: Colors.black),
       filled: true,
       fillColor: Colors.white,
       prefixIcon: Icon(icon),
+      suffixIcon: suffixIcon,
       border: OutlineInputBorder(borderRadius: BorderRadius.circular(30)),
+    );
+  }
+
+  // Fungsi untuk Label Field
+  Widget buildLabel(String text) {
+    return Text(
+      text,
+      style: const TextStyle(
+        color: Colors.white,
+        fontSize: 16,
+        fontWeight: FontWeight.bold,
+      ),
     );
   }
 }
