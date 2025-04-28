@@ -58,7 +58,7 @@ class _PiketGudangPageState extends State<PiketGudangPage> {
                 );
                 if (pickedDate != null) {
                   tanggalController.text =
-                      "${pickedDate.toLocal()}".split(' ')[0];
+                      "${pickedDate.day}, ${pickedDate.month}, ${pickedDate.year}";
                 }
               },
             ),
@@ -113,10 +113,39 @@ class _PiketGudangPageState extends State<PiketGudangPage> {
                   physics: const NeverScrollableScrollPhysics(),
                   itemCount: daftarTugas.length,
                   itemBuilder: (context, index) {
-                    return ListTile(
-                      title: Text(daftarTugas[index]['tugas'] ?? ''),
-                      subtitle: Text(
-                        'Nama: ${daftarTugas[index]['nama']} | Tanggal: ${daftarTugas[index]['tanggal']}',
+                    return GestureDetector(
+                      onTap: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder:
+                                (context) => DetailMenyapuPage(
+                                  nama: daftarTugas[index]['nama'] ?? '',
+                                  tanggal: daftarTugas[index]['tanggal'] ?? '',
+                                  tugas: daftarTugas[index]['tugas'] ?? '',
+                                ),
+                          ),
+                        );
+                      },
+                      child: Card(
+                        color: Colors.redAccent,
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(16),
+                        ),
+                        margin: const EdgeInsets.symmetric(vertical: 8),
+                        child: ListTile(
+                          title: Text(
+                            daftarTugas[index]['tugas'] ?? '',
+                            style: const TextStyle(
+                              color: Colors.white,
+                              fontWeight: FontWeight.bold,
+                            ),
+                          ),
+                          trailing: const Icon(
+                            Icons.arrow_forward_ios,
+                            color: Colors.white,
+                          ),
+                        ),
                       ),
                     );
                   },
