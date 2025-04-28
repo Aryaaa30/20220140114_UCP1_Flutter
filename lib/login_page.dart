@@ -23,7 +23,11 @@ class _LoginPageState extends State<LoginPage> {
         height: double.infinity,
         decoration: const BoxDecoration(
           gradient: LinearGradient(
-            colors: [Color(0xFFD2691E), Color(0xFF3E2723)],
+            colors: [
+              Color.fromARGB(255, 174, 141, 80), // wheat color (krem kayu)
+              Color(0xFFDEB887), // burlywood (coklat muda kayu)
+              Color(0xFF8B4513), // saddle brown (kayu coklat tua)
+            ],
             begin: Alignment.topCenter,
             end: Alignment.bottomCenter,
           ),
@@ -39,13 +43,13 @@ class _LoginPageState extends State<LoginPage> {
                 Center(
                   child: Column(
                     children: [
-                      Image.asset('assets/logo.png', height: 300),
+                      Image.asset('assets/logo.png', height: 250),
                       const SizedBox(height: 1),
                       const Text(
                         'SELAMAT DATANG KEMBALI',
                         style: TextStyle(
                           fontSize: 22,
-                          color: Colors.white,
+                          color: Colors.brown,
                           fontWeight: FontWeight.bold,
                         ),
                       ),
@@ -56,7 +60,7 @@ class _LoginPageState extends State<LoginPage> {
                 const Text(
                   'Email',
                   style: TextStyle(
-                    color: Colors.white,
+                    color: Colors.brown,
                     fontSize: 16,
                     fontWeight: FontWeight.bold,
                   ),
@@ -66,7 +70,7 @@ class _LoginPageState extends State<LoginPage> {
                   controller: emailController,
                   style: const TextStyle(color: Colors.black),
                   decoration: InputDecoration(
-                    prefixIcon: const Icon(Icons.email, color: Colors.black),
+                    prefixIcon: const Icon(Icons.email, color: Colors.brown),
                     labelText: 'Masukkan Email',
                     labelStyle: const TextStyle(color: Colors.black54),
                     filled: true,
@@ -86,7 +90,7 @@ class _LoginPageState extends State<LoginPage> {
                 const Text(
                   'Password',
                   style: TextStyle(
-                    color: Colors.white,
+                    color: Colors.brown,
                     fontSize: 16,
                     fontWeight: FontWeight.bold,
                   ),
@@ -97,7 +101,7 @@ class _LoginPageState extends State<LoginPage> {
                   obscureText: _obscureText,
                   style: const TextStyle(color: Colors.black),
                   decoration: InputDecoration(
-                    prefixIcon: const Icon(Icons.lock, color: Colors.black),
+                    prefixIcon: const Icon(Icons.lock, color: Colors.brown),
                     labelText: 'Masukkan Password',
                     labelStyle: const TextStyle(color: Colors.black54),
                     filled: true,
@@ -108,7 +112,7 @@ class _LoginPageState extends State<LoginPage> {
                     suffixIcon: IconButton(
                       icon: Icon(
                         _obscureText ? Icons.visibility : Icons.visibility_off,
-                        color: Colors.black,
+                        color: Colors.brown,
                       ),
                       onPressed: () {
                         setState(() {
@@ -130,12 +134,9 @@ class _LoginPageState extends State<LoginPage> {
                     width: 300,
                     child: ElevatedButton(
                       style: ElevatedButton.styleFrom(
-                        backgroundColor: const Color.fromARGB(
-                          255,
-                          193,
-                          100,
-                          34,
-                        ),
+                        backgroundColor: const Color(
+                          0xFF8B4513,
+                        ), // saddle brown - warna kayu tua
                         padding: const EdgeInsets.symmetric(vertical: 14),
                         shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(30),
@@ -165,7 +166,7 @@ class _LoginPageState extends State<LoginPage> {
                   children: [
                     const Text(
                       'Belum memiliki akun? Silahkan',
-                      style: TextStyle(color: Colors.white),
+                      style: TextStyle(color: Colors.brown),
                     ),
                     TextButton(
                       onPressed: () {
@@ -178,7 +179,7 @@ class _LoginPageState extends State<LoginPage> {
                       },
                       child: const Text(
                         'Daftar disini',
-                        style: TextStyle(color: Colors.orangeAccent),
+                        style: TextStyle(color: Colors.white),
                       ),
                     ),
                   ],
