@@ -22,14 +22,9 @@ class DetailPelangganPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: const Color(0xFFFCF6F3),
+      backgroundColor: const Color(0xFFFDF6F3),
       appBar: AppBar(
-        backgroundColor: Colors.redAccent,
-        title: const Text(
-          'Detail Pelanggan',
-          style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold),
-        ),
-        centerTitle: true,
+        backgroundColor: const Color(0xFF8B4513),
         leading: IconButton(
           icon: const Icon(Icons.arrow_back, color: Colors.white),
           onPressed: () {
@@ -40,107 +35,131 @@ class DetailPelangganPage extends StatelessWidget {
             );
           },
         ),
+        title: const Text(
+          'Detail Pelanggan',
+          style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold),
+        ),
+        centerTitle: true,
       ),
-      body: SingleChildScrollView(
-        padding: const EdgeInsets.all(16),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.center,
-          children: [
-            const SizedBox(height: 20),
-            const CircleAvatar(
-              radius: 60,
-              backgroundImage: AssetImage(
-                'assets/profile.jpg',
-              ), // Pastikan ada di assets
-            ),
-            const SizedBox(height: 16),
-            Text(
-              nama,
-              style: const TextStyle(fontSize: 22, fontWeight: FontWeight.bold),
-            ),
-            const SizedBox(height: 8),
-            Text(
-              email,
-              style: const TextStyle(fontSize: 16, color: Colors.black54),
-            ),
-            const SizedBox(height: 4),
-            Text(
-              noHp,
-              style: const TextStyle(fontSize: 16, color: Colors.black54),
-            ),
-            const SizedBox(height: 32),
-            buildDetailLabel('Alamat'),
-            buildDetailField(alamat),
-            const SizedBox(height: 16),
-            Row(
-              children: [
-                Expanded(
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      buildDetailLabel('Provinsi'),
-                      buildDetailField(provinsi),
-                    ],
-                  ),
-                ),
-                const SizedBox(width: 16),
-                Expanded(
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      buildDetailLabel('Kode Pos'),
-                      buildDetailField(kodePos),
-                    ],
-                  ),
-                ),
-              ],
-            ),
-            const SizedBox(height: 40),
-            SizedBox(
-              width: double.infinity,
-              height: 55,
-              child: ElevatedButton(
-                style: ElevatedButton.styleFrom(
-                  backgroundColor: Colors.redAccent,
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(16),
-                  ),
-                ),
-                onPressed: () {
-                  Navigator.pushAndRemoveUntil(
-                    context,
-                    MaterialPageRoute(
-                      builder: (context) => HomePage(username: nama),
-                    ),
-                    (Route<dynamic> route) => false,
-                  );
-                },
-                child: const Text(
-                  'Selesai',
-                  style: TextStyle(fontSize: 18, fontWeight: FontWeight.w500),
+      body: Container(
+        width: double.infinity,
+        height: double.infinity,
+        decoration: const BoxDecoration(
+          gradient: LinearGradient(
+            colors: [
+              Color.fromARGB(255, 174, 141, 80),
+              Color(0xFFDEB887),
+              Color(0xFF8B4513),
+            ],
+            begin: Alignment.topCenter,
+            end: Alignment.bottomCenter,
+          ),
+        ),
+        child: SingleChildScrollView(
+          padding: const EdgeInsets.all(20),
+          child: Column(
+            children: [
+              const SizedBox(height: 20),
+              const CircleAvatar(
+                radius: 60,
+                backgroundImage: AssetImage('assets/profile.jpg'),
+              ),
+              const SizedBox(height: 16),
+              Text(
+                nama,
+                style: const TextStyle(
+                  fontSize: 22,
+                  fontWeight: FontWeight.bold,
+                  color: Colors.white,
                 ),
               ),
-            ),
-          ],
+              const SizedBox(height: 8),
+              Text(
+                email,
+                style: const TextStyle(fontSize: 16, color: Colors.white70),
+              ),
+              const SizedBox(height: 4),
+              Text(
+                noHp,
+                style: const TextStyle(fontSize: 16, color: Colors.white70),
+              ),
+              const SizedBox(height: 30),
+              buildLabel('Alamat'),
+              buildField(alamat),
+              const SizedBox(height: 16),
+              Row(
+                children: [
+                  Expanded(
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [buildLabel('Provinsi'), buildField(provinsi)],
+                    ),
+                  ),
+                  const SizedBox(width: 16),
+                  Expanded(
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [buildLabel('Kode Pos'), buildField(kodePos)],
+                    ),
+                  ),
+                ],
+              ),
+              const SizedBox(height: 40),
+              SizedBox(
+                width: double.infinity,
+                height: 55,
+                child: ElevatedButton(
+                  style: ElevatedButton.styleFrom(
+                    backgroundColor: const Color(0xFF8B4513),
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(30),
+                    ),
+                  ),
+                  onPressed: () {
+                    Navigator.pushAndRemoveUntil(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => HomePage(username: nama),
+                      ),
+                      (Route<dynamic> route) => false,
+                    );
+                  },
+                  child: const Text(
+                    'Selesai',
+                    style: TextStyle(
+                      fontSize: 18,
+                      fontWeight: FontWeight.bold,
+                      color: Colors.white,
+                    ),
+                  ),
+                ),
+              ),
+            ],
+          ),
         ),
       ),
     );
   }
 
-  Widget buildDetailLabel(String text) {
+  Widget buildLabel(String text) {
     return Padding(
       padding: const EdgeInsets.only(bottom: 8),
       child: Text(
         text,
-        style: const TextStyle(fontWeight: FontWeight.w600, fontSize: 16),
+        style: const TextStyle(
+          fontWeight: FontWeight.bold,
+          fontSize: 16,
+          color: Colors.brown,
+        ),
       ),
     );
   }
 
-  Widget buildDetailField(String value) {
+  Widget buildField(String value) {
     return TextFormField(
       initialValue: value,
       readOnly: true,
+      style: const TextStyle(color: Colors.black),
       decoration: InputDecoration(
         filled: true,
         fillColor: Colors.white,
@@ -149,11 +168,11 @@ class DetailPelangganPage extends StatelessWidget {
           vertical: 16,
         ),
         border: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(16),
+          borderRadius: BorderRadius.circular(12),
           borderSide: const BorderSide(color: Colors.black26),
         ),
         enabledBorder: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(16),
+          borderRadius: BorderRadius.circular(12),
           borderSide: const BorderSide(color: Colors.black26),
         ),
       ),
