@@ -93,6 +93,17 @@ class _PendataanBarangPageState extends State<PendataanBarangPage> {
                 ),
               ),
             ),
+            const SizedBox(height: 16),
+            buildDropdownField(
+              label: 'Jenis Transaksi',
+              value: selectedJenisTransaksi,
+              items: jenisTransaksiList,
+              onChanged: (value) {
+                setState(() {
+                  selectedJenisTransaksi = value;
+                });
+              },
+            ),
           ],
         ),
       ),
@@ -131,5 +142,49 @@ Widget buildInputField({
         borderSide: const BorderSide(color: Colors.redAccent),
       ),
     ),
+  );
+}
+
+Widget buildDropdownField({
+  required String label,
+  required String? value,
+  required List<String> items,
+  required Function(String?) onChanged,
+}) {
+  return Column(
+    crossAxisAlignment: CrossAxisAlignment.start,
+    children: [
+      buildLabel(label),
+      const SizedBox(height: 8),
+      DropdownButtonFormField<String>(
+        value: value,
+        items:
+            items
+                .map((item) => DropdownMenuItem(value: item, child: Text(item)))
+                .toList(),
+        onChanged: onChanged,
+        decoration: InputDecoration(
+          hintText: label,
+          filled: true,
+          fillColor: Colors.white,
+          contentPadding: const EdgeInsets.symmetric(
+            vertical: 20,
+            horizontal: 16,
+          ),
+          border: OutlineInputBorder(
+            borderRadius: BorderRadius.circular(16),
+            borderSide: const BorderSide(color: Colors.black26),
+          ),
+          enabledBorder: OutlineInputBorder(
+            borderRadius: BorderRadius.circular(16),
+            borderSide: const BorderSide(color: Colors.black26),
+          ),
+          focusedBorder: OutlineInputBorder(
+            borderRadius: BorderRadius.circular(16),
+            borderSide: const BorderSide(color: Colors.redAccent),
+          ),
+        ),
+      ),
+    ],
   );
 }
