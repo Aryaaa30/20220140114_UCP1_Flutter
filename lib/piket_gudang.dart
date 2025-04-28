@@ -62,6 +62,42 @@ class _PiketGudangPageState extends State<PiketGudangPage> {
                 }
               },
             ),
+            const SizedBox(height: 16),
+            buildLabel('Tugas Piket'),
+            Row(
+              children: [
+                Expanded(child: buildInputField(tugasPiketController)),
+                const SizedBox(width: 8),
+                ElevatedButton(
+                  style: ElevatedButton.styleFrom(
+                    backgroundColor: Colors.redAccent,
+                    padding: const EdgeInsets.symmetric(
+                      horizontal: 24,
+                      vertical: 20,
+                    ),
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(12),
+                    ),
+                  ),
+                  onPressed: () {
+                    if (tugasPiketController.text.isNotEmpty) {
+                      setState(() {
+                        daftarTugas.add({
+                          'nama': namaAnggotaController.text,
+                          'tanggal': tanggalController.text,
+                          'tugas': tugasPiketController.text,
+                        });
+                        tugasPiketController.clear();
+                      });
+                    }
+                  },
+                  child: const Text(
+                    'Tambah',
+                    style: TextStyle(color: Colors.white),
+                  ),
+                ),
+              ],
+            ),
           ],
         ),
       ),
