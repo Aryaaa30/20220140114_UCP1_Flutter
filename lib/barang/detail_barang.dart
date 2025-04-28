@@ -46,6 +46,11 @@ class DetailDataPage extends StatelessWidget {
                   child: Icon(Icons.check, color: Colors.white, size: 48),
                 ),
               ),
+              const SizedBox(height: 24),
+              const Text(
+                'Data Berhasil Disimpan',
+                style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+              ),
             ],
           ),
         ),
