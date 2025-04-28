@@ -16,7 +16,6 @@ class _PiketGudangPageState extends State<PiketGudangPage> {
   final TextEditingController tugasPiketController = TextEditingController();
 
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
-
   final List<Map<String, String>> daftarTugas = [];
 
   @override
@@ -28,11 +27,9 @@ class _PiketGudangPageState extends State<PiketGudangPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: const Color(
-        0xFFFDF6F3,
-      ), // Light background color (sama dengan LoginPage)
+      backgroundColor: const Color(0xFFFDF6F3),
       appBar: AppBar(
-        backgroundColor: const Color.fromARGB(255, 139, 69, 19), // Saddle brown
+        backgroundColor: const Color.fromARGB(255, 139, 69, 19),
         leading: IconButton(
           icon: const Icon(Icons.arrow_back, color: Colors.white),
           onPressed: () => Navigator.pop(context),
@@ -49,9 +46,9 @@ class _PiketGudangPageState extends State<PiketGudangPage> {
         decoration: const BoxDecoration(
           gradient: LinearGradient(
             colors: [
-              Color.fromARGB(255, 174, 141, 80), // wheat color (krem kayu)
-              Color(0xFFDEB887), // burlywood (coklat muda kayu)
-              Color(0xFF8B4513), // saddle brown (kayu coklat tua)
+              Color.fromARGB(255, 174, 141, 80),
+              Color(0xFFDEB887),
+              Color(0xFF8B4513),
             ],
             begin: Alignment.topCenter,
             end: Alignment.bottomCenter,
@@ -69,8 +66,7 @@ class _PiketGudangPageState extends State<PiketGudangPage> {
                 buildInputField(
                   namaAnggotaController,
                   readOnly: true,
-                  isTanggal: false,
-                  isTugas: false,
+                  hintText: 'Nama anggota otomatis terisi',
                 ),
                 const SizedBox(height: 16),
                 buildLabel('Pilih Tanggal'),
@@ -78,6 +74,7 @@ class _PiketGudangPageState extends State<PiketGudangPage> {
                   tanggalController,
                   readOnly: true,
                   suffixIcon: const Icon(Icons.calendar_today),
+                  hintText: 'Pilih tanggal piket',
                   onTap: () async {
                     DateTime? pickedDate = await showDatePicker(
                       context: context,
@@ -91,7 +88,6 @@ class _PiketGudangPageState extends State<PiketGudangPage> {
                     }
                   },
                   isTanggal: true,
-                  isTugas: false,
                 ),
                 const SizedBox(height: 16),
                 buildLabel('Tugas Piket'),
@@ -100,19 +96,14 @@ class _PiketGudangPageState extends State<PiketGudangPage> {
                     Expanded(
                       child: buildInputField(
                         tugasPiketController,
-                        isTanggal: false,
+                        hintText: 'Masukkan tugas piket',
                         isTugas: true,
                       ),
                     ),
                     const SizedBox(width: 8),
                     ElevatedButton(
                       style: ElevatedButton.styleFrom(
-                        backgroundColor: const Color.fromARGB(
-                          255,
-                          139,
-                          69,
-                          19,
-                        ), // saddle brown
+                        backgroundColor: const Color.fromARGB(255, 139, 69, 19),
                         padding: const EdgeInsets.symmetric(
                           horizontal: 24,
                           vertical: 20,
@@ -176,12 +167,7 @@ class _PiketGudangPageState extends State<PiketGudangPage> {
                             );
                           },
                           child: Card(
-                            color: const Color.fromARGB(
-                              255,
-                              139,
-                              69,
-                              19,
-                            ), // saddle brown
+                            color: const Color.fromARGB(255, 139, 69, 19),
                             shape: RoundedRectangleBorder(
                               borderRadius: BorderRadius.circular(16),
                             ),
@@ -218,7 +204,7 @@ Widget buildLabel(String text) {
     style: const TextStyle(
       fontWeight: FontWeight.bold,
       fontSize: 16,
-      color: Colors.brown, // Ubah warna label menjadi coklat
+      color: Colors.brown,
     ),
   );
 }
@@ -230,6 +216,7 @@ Widget buildInputField(
   VoidCallback? onTap,
   bool isTanggal = false,
   bool isTugas = false,
+  String? hintText,
 }) {
   return TextFormField(
     controller: controller,
@@ -241,6 +228,8 @@ Widget buildInputField(
           return 'Tanggal tidak boleh kosong!';
         } else if (isTugas) {
           return 'Tugas tidak boleh kosong!';
+        } else {
+          return 'Field ini tidak boleh kosong!';
         }
       }
       return null;
@@ -248,6 +237,8 @@ Widget buildInputField(
     decoration: InputDecoration(
       filled: true,
       fillColor: Colors.white,
+      hintText: hintText,
+      hintStyle: const TextStyle(color: Colors.black54),
       suffixIcon: suffixIcon,
       border: OutlineInputBorder(borderRadius: BorderRadius.circular(12)),
     ),
