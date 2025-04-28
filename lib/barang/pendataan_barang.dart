@@ -171,6 +171,26 @@ class _PendataanBarangPageState extends State<PendataanBarangPage> {
                 ),
               ],
             ),
+            const SizedBox(height: 32),
+            SizedBox(
+              width: double.infinity,
+              height: 56,
+              child: ElevatedButton(
+                style: ElevatedButton.styleFrom(
+                  backgroundColor: Colors.redAccent,
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(24),
+                  ),
+                ),
+                onPressed: () {
+                  // Action Submit
+                },
+                child: const Text(
+                  'Submit',
+                  style: TextStyle(fontSize: 18, color: Colors.white),
+                ),
+              ),
+            ),
           ],
         ),
       ),
