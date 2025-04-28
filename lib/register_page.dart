@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:session5_ucp1/home_page.dart';
 
 class RegisterPage extends StatefulWidget {
   const RegisterPage({super.key});
@@ -19,8 +20,6 @@ class _RegisterPageState extends State<RegisterPage> {
 
   bool _obscurePassword = true;
   bool _obscureConfirmPassword = true;
-
-  String? selectedGender;
 
   @override
   Widget build(BuildContext context) {
@@ -62,7 +61,6 @@ class _RegisterPageState extends State<RegisterPage> {
                   ),
                   const SizedBox(height: 20),
 
-                  // Nama Lengkap
                   buildLabel("Nama Lengkap"),
                   customInputField(
                     controller: nameController,
@@ -72,7 +70,6 @@ class _RegisterPageState extends State<RegisterPage> {
                   ),
                   const SizedBox(height: 10),
 
-                  // Email dan No HP sejajar
                   Row(
                     children: [
                       Expanded(
@@ -109,7 +106,6 @@ class _RegisterPageState extends State<RegisterPage> {
                   ),
                   const SizedBox(height: 10),
 
-                  // Password dan Konfirmasi Password sejajar
                   Row(
                     children: [
                       Expanded(
@@ -181,7 +177,6 @@ class _RegisterPageState extends State<RegisterPage> {
                   ),
                   const SizedBox(height: 30),
 
-                  // Tombol Register
                   Center(
                     child: SizedBox(
                       width: 300,
@@ -200,9 +195,13 @@ class _RegisterPageState extends State<RegisterPage> {
                         ),
                         onPressed: () {
                           if (_formKey.currentState!.validate()) {
-                            ScaffoldMessenger.of(context).showSnackBar(
-                              const SnackBar(
-                                content: Text('Berhasil Register!'),
+                            // Navigasi ke HomePage sambil bawa nama user
+                            Navigator.pushReplacement(
+                              context,
+                              MaterialPageRoute(
+                                builder:
+                                    (context) =>
+                                        HomePage(username: nameController.text),
                               ),
                             );
                           }
@@ -216,7 +215,6 @@ class _RegisterPageState extends State<RegisterPage> {
                   ),
                   const SizedBox(height: 20),
 
-                  // Sudah punya akun
                   Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
@@ -247,7 +245,6 @@ class _RegisterPageState extends State<RegisterPage> {
     );
   }
 
-  // Fungsi field reusable
   Widget customInputField({
     required TextEditingController controller,
     required String label,
@@ -281,7 +278,6 @@ class _RegisterPageState extends State<RegisterPage> {
     );
   }
 
-  // Fungsi dekorasi form
   InputDecoration inputStyle(
     String label,
     IconData icon, [
@@ -298,7 +294,6 @@ class _RegisterPageState extends State<RegisterPage> {
     );
   }
 
-  // Fungsi untuk Label Field
   Widget buildLabel(String text) {
     return Text(
       text,
