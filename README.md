@@ -22,6 +22,9 @@
 ![Screenshot (1200)](https://github.com/user-attachments/assets/87461883-de64-427c-a9e6-05877227404b)
 
 [Demo Hasil Run Code UCP1_114](https://youtu.be/jQEF1b5QoQk)
+[Demo Video yang Kelupaan UCP1_114](https://youtu.be/jQEF1b5QoQk)
+
+
 
 
 
